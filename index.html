@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<head>
+    <script>
+        function computerPlay() {
+            var moves = ["ROCK", "PAPER", "SCISSORS"];
+            const randomMove = moves[Math.floor(Math.random() * moves.length)];
+            console.log(randomMove);
+            return randomMove;
+        }
+        function playRound(playerSelection, computerSelection) {
+            var result, score;
+            if (playerSelection === computerSelection) {
+                result = " Tie !! You both chose " + playerSelection;
+                score = 0;
+            }
+            else if ((playerSelection === "ROCK" && computerSelection === "SCISSORS") || (playerSelection === "SCISSORS" && computerSelection === "PAPER") || (playerSelection === "PAPER" && computerSelection === "SCISSORS")) {
+                //result = "You Win! " + playerSelection + " beats " + computerSelection;
+                score = 1;
+            }
+            else {
+                //result = "You Lose! " + computerSelection + " beats " + playerSelection;
+                score = 0;
+            }
+            return score;
+        }
+
+        function game() {
+            var total_score = 0;
+            for (var i = 0; i < 5; i++) {
+                var player = prompt("Enter your move : ROCK , PAPER , SCISSORS");
+                var playerSelection = player.toUpperCase();
+                var computerSelection = computerPlay();
+                console.log(computerSelection);
+                console.log(playerSelection);
+                //  console.log(playRound(playerSelection, computerSelection));
+                var current_score = playRound(playerSelection, computerSelection);
+                if (current_score === 1) {
+                    result = "You WIN! " + playerSelection + " beats " + computerSelection;
+                }
+                else {
+                    result = "You LOSE! " + computerSelection + " beats " + playerSelection;
+                }
+                console.log(result);
+                total_score = total_score + current_score;
+            }
+            return total_score;
+        }
+        var player_score = game();
+        console.log("Your score is " + player_score);
+    </script>
+
+<body>
+    <h1>
+        Rock , Paper , Scissors ! Check Console for Output.
+    </h1>
+</body>
+</head>
